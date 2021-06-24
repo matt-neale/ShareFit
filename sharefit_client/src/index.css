@@ -1,0 +1,95 @@
+body {
+  background-color: rgb(24, 26, 27) !important;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.form-label {
+  color: white !important;
+}
+
+h1 {
+  color: white;
+}
+
+.card-body {
+  background-color: rgb(24, 26, 27) !important;
+}
+
+.card-text {
+  color: white !important;
+}
+
+#showPageTitle {
+  color: white !important;
+}
+
+hr {
+  background-color: white !important;
+}
+
+#commentList {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.content-container {
+  min-height: calc(100vh - 34px);
+}
+
+.footer--pin {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  background-color: black;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#mainInfo {
+  margin: 20px;
+}
+
+.workoutCards {
+  margin: 20px;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  margin: 20px;
+}
+
+#carousel {
+  margin: 20px;
+}
+
+.exerciseTable {
+  margin: 20px !important;
+}
+
+.commentList {
+  margin: 20px;
+}
+
+#commentBody {
+  color: white;
+}
+
+.text-muted {
+  font-size: small;
+}
