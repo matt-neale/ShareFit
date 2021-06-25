@@ -2,6 +2,8 @@ import React from "react";
 import { User } from "../requests";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Fade from "react-reveal/Fade";
+import Zoom from "react-reveal/Zoom";
 
 const SignUpPage = (props) => {
   const { onSignUp } = props;
@@ -26,59 +28,73 @@ const SignUpPage = (props) => {
 
   return (
     <main>
-      <h1 className="title">Sign Up</h1>
+      <Zoom>
+        <h1 className="title">Sign Up</h1>
+      </Zoom>
       <Form className="form" onSubmit={handleSubmit}>
-        <Form.Group>
-          <Form.Label>First Name</Form.Label>
-          <Form.Control
-            type="first_name"
-            name="first_name"
-            id="first_name"
-            placeholder="Enter First Name"
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Last Name</Form.Label>
-          <Form.Control
-            type="last_name"
-            name="last_name"
-            id="last_name"
-            placeholder="Enter Last Name"
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Enter email"
-          />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Enter Password"
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Confirm Password</Form.Label>
-          <Form.Control
-            type="password"
-            name="password_confirmation"
-            id="password_confirmation"
-            placeholder="Enter Password Again"
-          />
-        </Form.Group>
-        <Button variant="outline-primary" type="submit">
-          Submit
-        </Button>
+        <Fade left>
+          <Form.Group>
+            <Form.Label>First Name</Form.Label>
+            <Form.Control
+              type="first_name"
+              name="first_name"
+              id="first_name"
+              placeholder="Enter First Name"
+            />
+          </Form.Group>
+        </Fade>
+        <Fade right>
+          <Form.Group>
+            <Form.Label>Last Name</Form.Label>
+            <Form.Control
+              type="last_name"
+              name="last_name"
+              id="last_name"
+              placeholder="Enter Last Name"
+            />
+          </Form.Group>
+        </Fade>
+        <Fade left>
+          <Form.Group>
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Enter email"
+            />
+            <Form.Text className="text-muted">
+              We'll never share your email with anyone else.
+            </Form.Text>
+          </Form.Group>
+        </Fade>
+        <Fade right>
+          <Form.Group>
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Enter Password"
+            />
+          </Form.Group>
+        </Fade>
+        <Fade left>
+          <Form.Group>
+            <Form.Label>Confirm Password</Form.Label>
+            <Form.Control
+              type="password"
+              name="password_confirmation"
+              id="password_confirmation"
+              placeholder="Enter Password Again"
+            />
+          </Form.Group>
+        </Fade>
+        <Fade right>
+          <Button variant="outline-primary" type="submit">
+            Submit
+          </Button>
+        </Fade>
       </Form>
     </main>
   );

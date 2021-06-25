@@ -2,6 +2,8 @@ import React from "react";
 import { Session } from "../requests";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Fade from "react-reveal/Fade";
+import Zoom from "react-reveal/Zoom";
 
 function SignInPage(props) {
   const { onSignIn } = props;
@@ -24,29 +26,37 @@ function SignInPage(props) {
 
   return (
     <main>
-      <h1 className="title">Sign In</h1>
+      <Zoom>
+        <h1 className="title">Sign In</h1>
+      </Zoom>
       <Form className="form" onSubmit={handleSubmit}>
-        <Form.Group>
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Enter email"
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Enter Password"
-          />
-        </Form.Group>
-        <Button variant="outline-primary" type="submit">
-          Submit
-        </Button>
+        <Fade right>
+          <Form.Group>
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Enter email"
+            />
+          </Form.Group>
+        </Fade>
+        <Fade left>
+          <Form.Group>
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Enter Password"
+            />
+          </Form.Group>
+        </Fade>
+        <Fade right>
+          <Button variant="outline-primary" type="submit">
+            Submit
+          </Button>
+        </Fade>
       </Form>
     </main>
   );
