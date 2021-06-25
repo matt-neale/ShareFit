@@ -6,46 +6,44 @@ import ExerciseList from "./ExerciseList";
 import { useState, useEffect } from "react";
 import NewCommentForm from "./NewCommentForm";
 import NewExerciseForm from "./NewExerciseForm";
+import Zoom from "react-reveal/Zoom";
+import Slide from "react-reveal/Slide";
 
 function WorkoutShowPage(props) {
   const [workout, setWorkout] = useState({});
   const { currentUser } = props;
 
-  useEffect(() => {
+  const refresh = () => {
     Workout.show(props.match.params.id).then((workout) => {
       setWorkout(workout);
     });
+  };
+
+  useEffect(() => {
+    refresh();
   }, [props.match.params.id]);
 
   const createExercise = (params) => {
     Exercise.create(props.match.params.id, params).then(() => {
-      Workout.show(props.match.params.id).then((workout) => {
-        setWorkout(workout);
-      });
+      refresh();
     });
   };
 
   const deleteExercise = (id) => {
     Exercise.destroy(id).then(() => {
-      Workout.show(props.match.params.id).then((workout) => {
-        setWorkout(workout);
-      });
+      refresh();
     });
   };
 
   const createComment = (params) => {
     Comment.create(props.match.params.id, params).then(() => {
-      Workout.show(props.match.params.id).then((workout) => {
-        setWorkout(workout);
-      });
+      refresh();
     });
   };
 
   const deleteComment = (id) => {
     Comment.destroy(id).then(() => {
-      Workout.show(props.match.params.id).then((workout) => {
-        setWorkout(workout);
-      });
+      refresh();
     });
   };
 
@@ -53,20 +51,23 @@ function WorkoutShowPage(props) {
     <div>
       {workout ? (
         <main>
-          <WorkoutDetails
-            title={workout.title}
-            description={workout.description}
-            creator={workout.creator}
-            created_at={new Date(workout.created_at).toLocaleString()}
-          />
-          <br />
+          <Zoom bottom>
+            <WorkoutDetails
+              title={workout.title}
+              description={workout.description}
+              creator={workout.creator}
+              created_at={new Date(workout.created_at).toLocaleString()}
+            />
+          </Zoom>
 
           {currentUser ? (
             workout &&
             workout.creator &&
             workout.creator.id === currentUser.id ? (
               <>
-                <h1 className="title">Add an exercise</h1>
+                <Zoom>
+                  <h1 className="title">Add an exercise</h1>
+                </Zoom>
                 <NewExerciseForm
                   name={Exercise.name}
                   sets={Exercise.sets}
@@ -81,23 +82,28 @@ function WorkoutShowPage(props) {
             ""
           )}
 
-          <h1 className="title">Exercises</h1>
-          <ExerciseList
-            exercises={workout.exercises}
-            deleteExercise={deleteExercise}
-          />
+          <Zoom>
+            <h1 className="title">Exercises</h1>
+          </Zoom>
+          <Zoom bottom>
+            <ExerciseList
+              exercises={workout.exercises}
+              deleteExercise={deleteExercise}
+            />
+          </Zoom>
 
           {currentUser ? (
             <NewCommentForm body={Comment.body} createComment={createComment} />
           ) : (
             ""
           )}
-          <br />
-          <CommentList
-            currentUser={currentUser}
-            workout={workout}
-            deleteComment={deleteComment}
-          />
+          <Slide bottom>
+            <CommentList
+              currentUser={currentUser}
+              workout={workout}
+              deleteComment={deleteComment}
+            />
+          </Slide>
         </main>
       ) : (
         ""

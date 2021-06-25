@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Workout } from "../requests";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
+import Zoom from "react-reveal/Zoom";
+import Rotate from "react-reveal/Rotate";
 
 class WorkoutIndexPage extends Component {
   constructor(props) {
@@ -30,17 +32,21 @@ class WorkoutIndexPage extends Component {
   render() {
     return (
       <main>
-        <h1 className="title">Workouts</h1>
+        <Zoom>
+          <h1 className="title">Workouts</h1>
+        </Zoom>
         {this.state.workouts.map(({ id, title, description }) => (
-          <Card key={id} border="primary" className="workoutCards">
-            <Card.Body>
-              <Link to={`/workouts/${id}`}>
-                <Card.Title>{title}</Card.Title>
-              </Link>
+          <Rotate bottom left>
+            <Card key={id} border="primary" className="workoutCards">
+              <Card.Body>
+                <Link to={`/workouts/${id}`}>
+                  <Card.Title>{title}</Card.Title>
+                </Link>
 
-              <Card.Text>{description}</Card.Text>
-            </Card.Body>
-          </Card>
+                <Card.Text>{description}</Card.Text>
+              </Card.Body>
+            </Card>
+          </Rotate>
         ))}
       </main>
     );
